@@ -1,3 +1,4 @@
+// @@iconify-code-gen
 import TabBar from '@/components/TabBar';
 import { Tabs } from 'expo-router';
 import React from 'react';
