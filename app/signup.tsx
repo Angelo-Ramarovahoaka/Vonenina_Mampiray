@@ -41,6 +41,15 @@ export default function Signup() {
   
   const [errors, setErrors] = useState<any>({});
 
+  // Success conditions
+  const isEmailValid = email.includes('@') && email.length > 5;
+  const isPhoneValid = phone.length >= 10;
+  const isCompanyValid = company.length > 2;
+  const isRoleValid = role.length > 2;
+  const isUsernameValid = username.length > 3;
+  const isPasswordValid = password.length >= 6;
+  const isConfirmPasswordValid = confirmPassword === password && confirmPassword.length > 0;
+
   const validateStep1 = () => {
     const newErrors: any = {};
     
@@ -109,6 +118,7 @@ export default function Signup() {
         company: company,
         role: role,
       };
+      console.log("User registered:", mockUser);
       authstate.login(mockUser);
     }
   };
@@ -186,6 +196,8 @@ export default function Signup() {
                       error={errors.email}
                       keyboardType="email-address"
                       autoCapitalize="none"
+                      asButton={true}
+                      showSuccess={isEmailValid}
                     />
                   </View>
 
@@ -197,6 +209,8 @@ export default function Signup() {
                       onChangeText={setPhone}
                       error={errors.phone}
                       keyboardType="phone-pad"
+                      asButton={true}
+                      showSuccess={isPhoneValid}
                     />
                   </View>
 
@@ -207,6 +221,8 @@ export default function Signup() {
                       value={company}
                       onChangeText={setCompany}
                       error={errors.company}
+                      asButton={true}
+                      showSuccess={isCompanyValid}
                     />
                   </View>
 
@@ -217,6 +233,8 @@ export default function Signup() {
                       value={role}
                       onChangeText={setRole}
                       error={errors.role}
+                      asButton={true}
+                      showSuccess={isRoleValid}
                     />
                   </View>
 
@@ -254,6 +272,8 @@ export default function Signup() {
                       value={username}
                       onChangeText={setUsername}
                       error={errors.username}
+                      asButton={true}
+                      showSuccess={isUsernameValid}
                     />
                   </View>
 
@@ -265,6 +285,8 @@ export default function Signup() {
                       onChangeText={setPassword}
                       error={errors.password}
                       secureTextEntry
+                      asButton={true}
+                      showSuccess={isPasswordValid}
                     />
                   </View>
 
@@ -276,6 +298,8 @@ export default function Signup() {
                       onChangeText={setConfirmPassword}
                       error={errors.confirmPassword}
                       secureTextEntry
+                      asButton={true}
+                      showSuccess={isConfirmPasswordValid}
                     />
                   </View>
 
