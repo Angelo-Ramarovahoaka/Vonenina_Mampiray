@@ -1,9 +1,22 @@
 // @@iconify-code-gen
 import TabBar from '@/components/TabBar';
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { AuthContext } from '@/utils/AuthContext';
+import { Redirect, Tabs } from 'expo-router';
+import React, { useContext } from 'react';
 
-export default function RootLayout() {
+
+export default function ProtectedLayout() {
+  const authstate = useContext(AuthContext);
+
+  // useEffect(() => {
+  //   if (!authstate.isLoggedIn) {
+      
+  //   }
+  // }, [authstate.isLoggedIn]);
+
+  if (!authstate.isLoggedIn) {
+    return <Redirect href="/login" />;
+  }
 
   return (
    <React.Fragment>

@@ -1,12 +1,12 @@
 import { router } from 'expo-router';
 import React from 'react';
 import {
-    Dimensions,
-    Image,
-    ImageBackground,
-    StatusBar,
-    StyleSheet,
-    View,
+  Dimensions,
+  Image,
+  ImageBackground,
+  StatusBar,
+  StyleSheet,
+  View,
 } from 'react-native';
 import CustomButton from '../components/CustomButton';
 
@@ -14,11 +14,11 @@ const { width, height } = Dimensions.get('window');
 
 export default function WelcomeScreen() {
   const handleLogin = () => {
-    router.push('/(tabs)/tantara'); 
+    router.push('/login');
   };
 
   const handleSignUp = () => {
-    router.push('/(tabs)/tantara');
+    router.push('/signup');
   };
 
   return (

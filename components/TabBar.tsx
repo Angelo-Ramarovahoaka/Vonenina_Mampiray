@@ -1,15 +1,21 @@
 import { PlatformPressable, Text } from '@react-navigation/elements';
 import { useLinkBuilder } from '@react-navigation/native';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Svg, { Circle, G, Path } from 'react-native-svg';
 
+interface TabBarProps {
+  state: any;
+  descriptors: any;
+  navigation: any;
+}
 
-function TabBar({ state, descriptors, navigation }) {
+function TabBar({ state, descriptors, navigation }: TabBarProps) {
   const primaryColor = "#B7170F"; 
   const geyColor = "#9B9B9B";
   const { buildHref } = useLinkBuilder();
-  const icons = {
-    tantara: ({ color }) => (
+  const icons: { [key: string]: ({ color }: { color: string }) => React.ReactElement } = {
+    tantara: ({ color }: { color: string }) => (
       <Svg width={38} height={38} viewBox="0 0 28 28">
         <Path 
           fill={color} 
@@ -17,7 +23,7 @@ function TabBar({ state, descriptors, navigation }) {
         />
       </Svg>
     ),
-    mpiandraikitra: ({ color }) => (
+    mpiandraikitra: ({ color }: { color: string }) => (
       <Svg width={38} height={38} viewBox="0 0 28 28">
         <Path 
           fill={color} 
@@ -25,7 +31,7 @@ function TabBar({ state, descriptors, navigation }) {
         />
       </Svg>
     ),
-    hafatra: ({ color }) => (
+    hafatra: ({ color }: { color: string }) => (
       <Svg width={36} height={36} viewBox="0 0 28 28">
         <Path 
           fill={color} 
@@ -33,7 +39,7 @@ function TabBar({ state, descriptors, navigation }) {
         />
       </Svg>
     ),
-    fifandraisana: ({ color }) => (
+    fifandraisana: ({ color }: { color: string }) => (
       <Svg width={36} height={36} viewBox="0 0 28 28">
         <G fill="none" stroke={color} strokeWidth="1.5">
           <Path strokeLinecap="round" strokeLinejoin="round" d="M11 5h7m-8 5l4.5 4.5M5 11v7" />
@@ -44,7 +50,7 @@ function TabBar({ state, descriptors, navigation }) {
         </G>
       </Svg>
     ),
-    fikirana: ({ color }) => (
+    fikirana: ({ color }: { color: string }) => (
       <Svg width={38} height={38} viewBox="0 0 28 28">
         <Path 
           fill={color} 
@@ -56,7 +62,7 @@ function TabBar({ state, descriptors, navigation }) {
 
   return (
     <View style={styles.tabbar}>
-      {state.routes.map((route, index) => {
+      {state.routes.map((route: any, index: number) => {
         const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
